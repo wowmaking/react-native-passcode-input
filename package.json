@@ -1,0 +1,32 @@
+{
+  "name": "@wowmaking/react-native-passcode-input",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "react-native"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wowmaking/react-native-passcode-input.git"
+  },
+  "author": {
+    "name": "kurtsergey",
+    "email": "kurtsergey@gmail.com",
+    "url": "https://github.com/kurtsergey"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wowmaking/react-native-passcode-input/issues"
+  },
+  "homepage": "https://github.com/wowmaking/react-native-passcode-input#README",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-native": "^0.50.0",
+    "react-native-vector-icons": "^4.5.0"
+  }
+}
