@@ -11,7 +11,7 @@ import Item from './item';
 
 
 const Filler = ({ size, active, color, icon, iconFilled, }) => (
-    <View style={StyleSheet.flatten([styles.root, size == 'sm' ? styles.rootSm : null])}>
+    <View style={styles.root}>
         {
             _map(_range(4), v => (
                 <Item
@@ -28,7 +28,7 @@ const Filler = ({ size, active, color, icon, iconFilled, }) => (
 );
 
 Filler.propTypes = {
-    size: PropTypes.string,
+    size: Item.propTypes.size,
     color: PropTypes.string.isRequired,
     active: PropTypes.number.isRequired,
     icon: Item.propTypes.icon,
@@ -41,13 +41,9 @@ export default Filler;
 
 const styles = StyleSheet.create({
     root: {
-        width: 200,
         alignSelf: 'center',
         flexDirection: 'row',
         flexWrap: 'nowrap',
-        justifyContent: 'space-around',
-    },
-    rootSm: {
-        width: 120,
+        justifyContent: 'center',
     },
 });

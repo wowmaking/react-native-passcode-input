@@ -11,7 +11,7 @@ const Item = ({ active, size, color, icon, iconFilled, }) => (
     <View style={styles.root}>
         <Icon
             name={active ? iconFilled : icon}
-            size={size == 'sm' ? SIZE_SM : SIZE_MD}
+            size={size}
             color={color}
             style={styles.icon}
         />
@@ -19,7 +19,7 @@ const Item = ({ active, size, color, icon, iconFilled, }) => (
 );
 
 Item.propTypes = {
-    size: PropTypes.string,
+    size: PropTypes.number,
     color: PropTypes.string.isRequired,
     active: PropTypes.bool.isRequired,
     icon: Icon.propTypes.name,
@@ -29,6 +29,7 @@ Item.propTypes = {
 Item.defaultProps = {
     icon: 'checkbox-blank-outline',
     iconFilled: 'checkbox-blank',
+    size: 20,
 };
 
 
@@ -39,12 +40,7 @@ const TRANSPARENT_COLOR = 'transparent';
 
 const styles = StyleSheet.create({
     root: {
-        width: '25%',
-        flexBasis: '25%',
-        flex: 1,
-        flexGrow: 0,
-        flexShrink: 0,
-        alignItems: 'center',
+        marginHorizontal: 8,
     },
     icon: {
         backgroundColor: TRANSPARENT_COLOR,

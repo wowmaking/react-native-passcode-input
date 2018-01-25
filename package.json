@@ -22,7 +22,8 @@
   "homepage": "https://github.com/wowmaking/react-native-passcode-input#README",
   "dependencies": {
     "lodash": "^4.17.4",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "react-native-elevated-view": "0.0.6"
   },
   "peerDependencies": {
     "react": "^16.0.0",

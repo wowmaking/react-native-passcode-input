@@ -15,11 +15,20 @@ export default class RNPasscodeInput extends PureComponent {
 
     static propTypes = {
         value: PropTypes.string,
+        title: PropTypes.string,
+        titleStyle: Text.propTypes.style,
+        label: PropTypes.string,
+        labelStyle: Text.propTypes.style,
         error: PropTypes.string,
-        size: PropTypes.oneOf(['md', 'sm']),
-        color: PropTypes.string.isRequired,
+        errorStyle: Text.propTypes.style,
+        fillerSize: Filler.propTypes.size,
+        fillerColor: Filler.propTypes.color,
         fillerIcon: Filler.propTypes.icon,
         fillerIconFilled: Filler.propTypes.iconFilled,
+        size: PropTypes.oneOf(['md', 'sm']),
+        buttonColor: Keyboard.propTypes.buttonColor,
+        buttonStyle: Keyboard.propTypes.buttonStyle,
+        backspace: Keyboard.propTypes.backspace,
         onChange: PropTypes.func.isRequired,
     };
 
@@ -34,24 +43,43 @@ export default class RNPasscodeInput extends PureComponent {
     }
 
     render() {
-        var props = this.props;
+        var props = this.props,
+            titleStyle = StyleSheet.flatten([
+                styles.title,
+                props.titleStyle,
+            ]),
+            labelStyle = StyleSheet.flatten([
+                styles.label,
+                props.error ? styles.error : null,
+                props.labelStyle,
+                props.error ? props.errorStyle : null,
+            ]);
 
         return (
             <View>
 
+                {
+                    props.title ?
+                        <Text style={titleStyle}>{props.title}</Text>
+                        :
+                        null
+                }
+
                 <Filler
-                    size={props.size}
-                    color={props.color}
+                    size={props.fillerSize}
+                    color={props.fillerColor}
                     icon={props.fillerIcon}
                     iconFilled={props.fillerIconFilled}
                     active={props.value.length}
                 />
 
-                <Text style={[styles.label, props.error ? styles.error : null]}>{props.error || props.label}</Text>
+                <Text style={labelStyle}>{props.error || props.label || ' '}</Text>
 
                 <Keyboard
                     size={props.size}
-                    color={props.color}
+                    buttonColor={props.buttonColor}
+                    buttonStyle={props.buttonStyle}
+                    backspace={props.backspace}
                     onPress={this.handlePress}
                 />
 
@@ -72,12 +100,20 @@ export default class RNPasscodeInput extends PureComponent {
 
 
 const ERROR_COLOR = '#ff0000';
+const TRANSPARENT_COLOR = 'transparent';
 
 const styles = StyleSheet.create({
-    label: {
-        fontSize: 15,
+    title: {
+        fontSize: 16,
         textAlign: 'center',
         marginVertical: 8,
+        backgroundColor: TRANSPARENT_COLOR,
+    },
+    label: {
+        fontSize: 14,
+        textAlign: 'center',
+        marginVertical: 8,
+        backgroundColor: TRANSPARENT_COLOR,
     },
     error: {
         color: ERROR_COLOR,
