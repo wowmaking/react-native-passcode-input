@@ -9,30 +9,40 @@ import { View, StyleSheet } from 'react-native';
 import Button from './button';
 
 
-const Keyboard = ({ size, buttonColor, buttonStyle, backspace, onPress, }) => (
-    <View style={StyleSheet.flatten([styles.root, size == 'sm' ? styles.rootSm : null])}>
-        {
-            _map(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ''], v => (
-                <Button
-                    key={v}
-                    value={v}
-                    size={size}
-                    color={buttonColor}
-                    style={buttonStyle}
-                    backspace={backspace}
-                    onPress={onPress}
-                />
-            ))
-        }
-    </View>
-);
+const Keyboard = ({
+    size, backspace, buttonColor,
+    buttonContainerStyle, buttonStyle, buttonTextStyle, buttonIconStyle,
+    onPress,
+}) => (
+        <View style={StyleSheet.flatten([styles.root, size == 'sm' ? styles.rootSm : null])}>
+            {
+                _map(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ''], v => (
+                    <Button
+                        key={v}
+                        value={v}
+                        size={size}
+                        backspace={backspace}
+                        color={buttonColor}
+                        containerStyle={buttonContainerStyle}
+                        style={buttonStyle}
+                        textStyle={buttonTextStyle}
+                        iconStyle={buttonIconStyle}
+                        onPress={onPress}
+                    />
+                ))
+            }
+        </View>
+    );
 
 
 Keyboard.propTypes = {
     size: PropTypes.string,
-    buttonColor: Button.propTypes.color,
-    buttonStyle: Button.propTypes.style,
     backspace: Button.propTypes.backspace,
+    buttonColor: Button.propTypes.color,
+    buttonContainerStyle: Button.propTypes.containerStyle,
+    buttonStyle: Button.propTypes.style,
+    buttonTextStyle: Button.propTypes.textStyle,
+    buttonIconStyle: Button.propTypes.iconStyle,
     onPress: PropTypes.func.isRequired,
 };
 

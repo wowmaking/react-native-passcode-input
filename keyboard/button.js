@@ -17,17 +17,39 @@ class Button extends PureComponent {
     }
 
     render() {
-        var { size, value, color, backspace, style, } = this.props,
-            buttonStyle = StyleSheet.flatten([
-                styles.button,
-                size == 'sm' ? styles.buttonSm : null,
-                { backgroundColor: value ? color : 'transparent', },
-                style,
-            ]);
+        var {
+            size, value, backspace, color,
+            containerStyle, style, textStyle, iconStyle,
+        } = this.props;
+
+        containerStyle = StyleSheet.flatten([
+            styles.root,
+            size == 'sm' ? styles.rootSm : null,
+            containerStyle,
+        ]);
+
+        style = StyleSheet.flatten([
+            styles.button,
+            size == 'sm' ? styles.buttonSm : null,
+            style,
+            { backgroundColor: value ? color : 'transparent', },
+        ]);
+
+        textStyle = StyleSheet.flatten([
+            styles.txt,
+            size == 'sm' ? styles.txtSm : null,
+            textStyle,
+        ]);
+
+        iconStyle = StyleSheet.flatten([
+            styles.icon, size == 'sm' ? styles.iconSm : null,
+            { color, },
+            iconStyle,
+        ]);
 
         return (
-            <View style={StyleSheet.flatten([styles.root, size == 'sm' ? styles.rootSm : null])}>
-                <ElevatedView elevation={4} style={buttonStyle}>
+            <View style={containerStyle}>
+                <ElevatedView elevation={4} style={style}>
                     <TouchableOpacity
                         activeOpacity={.5}
                         style={styles.touchable}
@@ -35,7 +57,7 @@ class Button extends PureComponent {
                     >
                         {
                             value ?
-                                <Text style={StyleSheet.flatten([styles.txt, size == 'sm' ? styles.txtSm : null])}>{value}</Text>
+                                <Text style={textStyle}>{value}</Text>
                                 :
                                 backspace ?
                                     <Image
@@ -46,7 +68,7 @@ class Button extends PureComponent {
                                     <Icon
                                         name='backspace'
                                         size={size == 'sm' ? SIZE_SM : SIZE_MD}
-                                        style={StyleSheet.flatten([styles.icon, size == 'sm' ? styles.iconSm : null, { color, }])}
+                                        style={iconStyle}
                                     />
                         }
                     </TouchableOpacity>
@@ -62,11 +84,14 @@ class Button extends PureComponent {
 }
 
 Button.propTypes = {
-    size: PropTypes.string,
-    color: PropTypes.string.isRequired,
     value: PropTypes.string,
-    style: ViewPropTypes.style,
+    size: PropTypes.string,
     backspace: Image.propTypes.source,
+    color: PropTypes.string.isRequired,
+    containerStyle: ViewPropTypes.style,
+    style: ViewPropTypes.style,
+    textStyle: Text.propTypes.style,
+    iconStyle: ViewPropTypes.style,
     onPress: PropTypes.func,
 };
 
@@ -74,6 +99,7 @@ Button.propTypes = {
 export default Button;
 
 
+const BACK_COLOR = 'black';
 const TEXT_COLOR = 'white';
 
 const styles = StyleSheet.create({
@@ -86,6 +112,7 @@ const styles = StyleSheet.create({
         width: '16%',
     },
     button: {
+        backgroundColor: BACK_COLOR,
         alignContent: 'stretch',
         flexGrow: 1,
         flexShrink: 1,

@@ -21,14 +21,21 @@ export default class RNPasscodeInput extends PureComponent {
         labelStyle: Text.propTypes.style,
         error: PropTypes.string,
         errorStyle: Text.propTypes.style,
+
+        size: PropTypes.oneOf(['md', 'sm']),
+        backspace: Keyboard.propTypes.backspace,
+
         fillerSize: Filler.propTypes.size,
         fillerColor: Filler.propTypes.color,
         fillerIcon: Filler.propTypes.icon,
         fillerIconFilled: Filler.propTypes.iconFilled,
-        size: PropTypes.oneOf(['md', 'sm']),
+
         buttonColor: Keyboard.propTypes.buttonColor,
+        buttonContainerStyle: Keyboard.propTypes.buttonContainerStyle,
         buttonStyle: Keyboard.propTypes.buttonStyle,
-        backspace: Keyboard.propTypes.backspace,
+        buttonTextStyle: Keyboard.propTypes.buttonTextStyle,
+        buttonIconStyle: Keyboard.propTypes.buttonIconStyle,
+
         onChange: PropTypes.func.isRequired,
     };
 
@@ -77,9 +84,12 @@ export default class RNPasscodeInput extends PureComponent {
 
                 <Keyboard
                     size={props.size}
-                    buttonColor={props.buttonColor}
-                    buttonStyle={props.buttonStyle}
                     backspace={props.backspace}
+                    buttonColor={props.buttonColor}
+                    buttonContainerStyle={props.buttonContainerStyle}
+                    buttonStyle={props.buttonStyle}
+                    buttonTextStyle={props.buttonTextStyle}
+                    buttonIconStyle={props.buttonIconStyle}
                     onPress={this.handlePress}
                 />
 
