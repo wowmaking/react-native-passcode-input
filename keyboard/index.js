@@ -62,5 +62,6 @@ const styles = StyleSheet.create({
     },
     rootSm: {
         justifyContent: 'center',
+        width: '90%',
     },
 });

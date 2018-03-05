@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         alignContent: 'stretch',
     },
     rootSm: {
-        width: '16%',
+        width: '15%',
     },
     button: {
         backgroundColor: BACK_COLOR,
