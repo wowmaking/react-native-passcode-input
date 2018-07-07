@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet, } from 'react-native';
+import { View, Text, StyleSheet, ViewPropTypes, } from 'react-native';
 
 
 import Filler from './filler';
@@ -15,6 +15,9 @@ export default class RNPasscodeInput extends PureComponent {
 
     static propTypes = {
         value: PropTypes.string,
+
+        headerStyle: ViewPropTypes.style,
+
         title: PropTypes.string,
         titleStyle: Text.propTypes.style,
         label: PropTypes.string,
@@ -66,23 +69,27 @@ export default class RNPasscodeInput extends PureComponent {
         return (
             <View>
 
-                {
-                    props.title ?
-                        <Text style={titleStyle}>{props.title}</Text>
-                        :
-                        null
-                }
+                <View style={props.headerStyle}>
 
-                <Filler
-                    active={props.value.length}
-                    size={props.fillerSize}
-                    color={props.fillerColor}
-                    colorFilled={props.fillerColorFilled}
-                    icon={props.fillerIcon}
-                    iconFilled={props.fillerIconFilled}
-                />
+                    {
+                        props.title ?
+                            <Text style={titleStyle}>{props.title}</Text>
+                            :
+                            null
+                    }
 
-                <Text style={labelStyle}>{props.error || props.label || ' '}</Text>
+                    <Filler
+                        active={props.value.length}
+                        size={props.fillerSize}
+                        color={props.fillerColor}
+                        colorFilled={props.fillerColorFilled}
+                        icon={props.fillerIcon}
+                        iconFilled={props.fillerIconFilled}
+                    />
+
+                    <Text style={labelStyle}>{props.error || props.label || ' '}</Text>
+
+                </View>
 
                 <Keyboard
                     size={props.size}
