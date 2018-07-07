@@ -10,7 +10,7 @@ import { View, StyleSheet } from 'react-native';
 import Item from './item';
 
 
-const Filler = ({ size, active, color, icon, iconFilled, }) => (
+const Filler = ({ active, size, color, colorFilled, icon, iconFilled, }) => (
     <View style={styles.root}>
         {
             _map(_range(4), v => (
@@ -19,6 +19,7 @@ const Filler = ({ size, active, color, icon, iconFilled, }) => (
                     active={active > v}
                     size={size}
                     color={color}
+                    colorFilled={colorFilled}
                     icon={icon}
                     iconFilled={iconFilled}
                 />
@@ -28,9 +29,10 @@ const Filler = ({ size, active, color, icon, iconFilled, }) => (
 );
 
 Filler.propTypes = {
-    size: Item.propTypes.size,
-    color: PropTypes.string.isRequired,
     active: PropTypes.number.isRequired,
+    size: Item.propTypes.size,
+    color: Item.propTypes.color,
+    colorFilled: Item.propTypes.colorFilled,
     icon: Item.propTypes.icon,
     iconFilled: Item.propTypes.iconFilled,
 };

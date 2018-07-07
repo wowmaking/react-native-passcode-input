@@ -7,21 +7,22 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SIZE_MD, SIZE_SM } from '../';
 
 
-const Item = ({ active, size, color, icon, iconFilled, }) => (
+const Item = ({ active, size, color, colorFilled, icon, iconFilled, }) => (
     <View style={styles.root}>
         <Icon
             name={active ? iconFilled : icon}
             size={size}
-            color={color}
+            color={active ? colorFilled || color : color}
             style={styles.icon}
         />
     </View>
 );
 
 Item.propTypes = {
+    active: PropTypes.bool.isRequired,
     size: PropTypes.number,
     color: PropTypes.string.isRequired,
-    active: PropTypes.bool.isRequired,
+    colorFilled: PropTypes.string,
     icon: Icon.propTypes.name,
     iconFilled: Icon.propTypes.name,
 };

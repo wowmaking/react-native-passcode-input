@@ -27,6 +27,7 @@ export default class RNPasscodeInput extends PureComponent {
 
         fillerSize: Filler.propTypes.size,
         fillerColor: Filler.propTypes.color,
+        fillerColorFilled: Filler.propTypes.colorFilled,
         fillerIcon: Filler.propTypes.icon,
         fillerIconFilled: Filler.propTypes.iconFilled,
 
@@ -73,11 +74,12 @@ export default class RNPasscodeInput extends PureComponent {
                 }
 
                 <Filler
+                    active={props.value.length}
                     size={props.fillerSize}
                     color={props.fillerColor}
+                    colorFilled={props.fillerColorFilled}
                     icon={props.fillerIcon}
                     iconFilled={props.fillerIconFilled}
-                    active={props.value.length}
                 />
 
                 <Text style={labelStyle}>{props.error || props.label || ' '}</Text>
