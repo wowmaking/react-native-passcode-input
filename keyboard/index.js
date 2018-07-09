@@ -3,18 +3,18 @@ import _map from 'lodash/map';
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ViewPropTypes, } from 'react-native';
 
 
 import Button from './button';
 
 
 const Keyboard = ({
-    size, backspace, buttonColor,
-    buttonContainerStyle, buttonStyle, buttonTextStyle, buttonIconStyle,
+    size, backspace, style,
+    buttonColor, buttonContainerStyle, buttonStyle, buttonTextStyle, buttonIconStyle,
     onPress,
 }) => (
-        <View style={StyleSheet.flatten([styles.root, size == 'sm' ? styles.rootSm : null])}>
+        <View style={StyleSheet.flatten([styles.root, size == 'sm' ? styles.rootSm : null, style,])}>
             {
                 _map(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ''], v => (
                     <Button
@@ -38,6 +38,7 @@ const Keyboard = ({
 Keyboard.propTypes = {
     size: PropTypes.string,
     backspace: Button.propTypes.backspace,
+    style: ViewPropTypes.style,
     buttonColor: Button.propTypes.color,
     buttonContainerStyle: Button.propTypes.containerStyle,
     buttonStyle: Button.propTypes.style,

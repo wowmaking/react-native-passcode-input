@@ -34,6 +34,7 @@ export default class RNPasscodeInput extends PureComponent {
         fillerIcon: Filler.propTypes.icon,
         fillerIconFilled: Filler.propTypes.iconFilled,
 
+        keyboardStyle: Keyboard.propTypes.style,
         buttonColor: Keyboard.propTypes.buttonColor,
         buttonContainerStyle: Keyboard.propTypes.buttonContainerStyle,
         buttonStyle: Keyboard.propTypes.buttonStyle,
@@ -94,6 +95,7 @@ export default class RNPasscodeInput extends PureComponent {
                 <Keyboard
                     size={props.size}
                     backspace={props.backspace}
+                    style={props.keyboardStyle}
                     buttonColor={props.buttonColor}
                     buttonContainerStyle={props.buttonContainerStyle}
                     buttonStyle={props.buttonStyle}
