@@ -1,7 +1,7 @@
 {
   "name": "@wowmaking/react-native-passcode-input",
   "version": "0.3.4",
-  "description": "",
+  "description": "Passcode input component for ReactNative Apps",
   "main": "index.js",
   "keywords": [
     "react-native"
