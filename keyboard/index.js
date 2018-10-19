@@ -11,7 +11,7 @@ import Button from './button';
 
 const Keyboard = ({
     size, backspace, style,
-    buttonColor, buttonContainerStyle, buttonStyle, buttonTextStyle, buttonIconStyle,
+    buttonContainerStyle, buttonStyle, buttonTextStyle, buttonIconStyle,
     onPress,
 }) => (
         <View style={StyleSheet.flatten([styles.root, size == 'sm' ? styles.rootSm : null, style,])}>
@@ -22,7 +22,6 @@ const Keyboard = ({
                         value={v}
                         size={size}
                         backspace={backspace}
-                        color={buttonColor}
                         containerStyle={buttonContainerStyle}
                         style={buttonStyle}
                         textStyle={buttonTextStyle}
@@ -39,7 +38,6 @@ Keyboard.propTypes = {
     size: PropTypes.string,
     backspace: Button.propTypes.backspace,
     style: ViewPropTypes.style,
-    buttonColor: Button.propTypes.color,
     buttonContainerStyle: Button.propTypes.containerStyle,
     buttonStyle: Button.propTypes.style,
     buttonTextStyle: Button.propTypes.textStyle,

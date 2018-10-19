@@ -18,7 +18,7 @@ class Button extends PureComponent {
 
     render() {
         var {
-            size, value, backspace, color,
+            size, value, backspace,
             containerStyle, style, textStyle, iconStyle,
         } = this.props;
 
@@ -32,7 +32,6 @@ class Button extends PureComponent {
             styles.button,
             size == 'sm' ? styles.buttonSm : null,
             style,
-            { backgroundColor: value ? color : 'transparent', },
         ]);
 
         textStyle = StyleSheet.flatten([
@@ -42,19 +41,19 @@ class Button extends PureComponent {
         ]);
 
         iconStyle = StyleSheet.flatten([
-            styles.icon, size == 'sm' ? styles.iconSm : null,
-            { color, },
+            styles.icon,
+            size == 'sm' ? styles.iconSm : null,
             iconStyle,
         ]);
 
         return (
-            <View style={containerStyle}>
+            <TouchableOpacity
+                activeOpacity={.5}
+                style={containerStyle}
+                onPress={this.handlePress}
+            >
                 <ElevatedView elevation={4} style={style}>
-                    <TouchableOpacity
-                        activeOpacity={.5}
-                        style={styles.touchable}
-                        onPress={this.handlePress}
-                    >
+                    <View style={styles.textCt}>
                         {
                             value ?
                                 <Text style={textStyle}>{value}</Text>
@@ -71,9 +70,9 @@ class Button extends PureComponent {
                                         style={iconStyle}
                                     />
                         }
-                    </TouchableOpacity>
+                    </View>
                 </ElevatedView>
-            </View>
+            </TouchableOpacity>
         );
     }
 
@@ -87,7 +86,6 @@ Button.propTypes = {
     value: PropTypes.string,
     size: PropTypes.string,
     backspace: Image.propTypes.source,
-    color: PropTypes.string.isRequired,
     containerStyle: ViewPropTypes.style,
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
@@ -121,7 +119,7 @@ const styles = StyleSheet.create({
     },
     buttonSm: {
     },
-    touchable: {
+    textCt: {
         flexGrow: 1,
         flexShrink: 1,
         alignItems: 'center',
